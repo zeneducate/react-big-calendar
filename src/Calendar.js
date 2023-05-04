@@ -195,6 +195,15 @@ class Calendar extends React.Component {
     allDayAccessor: accessor,
 
     /**
+     * ```js
+     * string | (event: Object) => boolean
+     * ```
+     *
+     * @type {(func|string)}
+     */
+    sortOrderAccessor: accessor,
+
+    /**
      * The start date/time of the event. Must resolve to a JavaScript `Date` object.
      *
      * ```js
@@ -854,6 +863,7 @@ class Calendar extends React.Component {
     titleAccessor: 'title',
     tooltipAccessor: 'title',
     allDayAccessor: 'allDay',
+    sortOrderAccessor: 'sortOrder',
     startAccessor: 'start',
     endAccessor: 'end',
     resourceAccessor: 'resourceId',
@@ -881,6 +891,7 @@ class Calendar extends React.Component {
     startAccessor,
     endAccessor,
     allDayAccessor,
+    sortOrderAccessor,
     tooltipAccessor,
     titleAccessor,
     resourceAccessor,
@@ -928,6 +939,7 @@ class Calendar extends React.Component {
         start: wrapAccessor(startAccessor),
         end: wrapAccessor(endAccessor),
         allDay: wrapAccessor(allDayAccessor),
+        sortOrder: wrapAccessor(sortOrderAccessor),
         tooltip: wrapAccessor(tooltipAccessor),
         title: wrapAccessor(titleAccessor),
         resource: wrapAccessor(resourceAccessor),

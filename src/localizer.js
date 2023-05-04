@@ -89,8 +89,8 @@ function continuesAfter(start, end, last) {
 
 // These two are used by eventLevels
 function sortEvents({
-  evtA: { start: aStart, end: aEnd, allDay: aAllDay },
-  evtB: { start: bStart, end: bEnd, allDay: bAllDay },
+  evtA: { start: aStart, end: aEnd, allDay: aAllDay, sortOrder: aSortOrder },
+  evtB: { start: bStart, end: bEnd, allDay: bAllDay, sortOrder: bSortOrder },
 }) {
   let startSort = +startOf(aStart, 'day') - +startOf(bStart, 'day')
 
@@ -99,6 +99,7 @@ function sortEvents({
   let durB = diff(bStart, ceil(bEnd, 'day'), 'day')
 
   return (
+    +aSortOrder - +bSortOrder || // sort by sortOrder
     startSort || // sort by start Day first
     Math.max(durB, 1) - Math.max(durA, 1) || // events spanning multiple days go first
     !!bAllDay - !!aAllDay || // then allDay single day events
