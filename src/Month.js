@@ -109,6 +109,7 @@ class MonthView extends React.Component {
       localizer,
       longPressThreshold,
       accessors,
+
       getters,
       showAllEvents,
     } = this.props
